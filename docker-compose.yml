@@ -1,0 +1,22 @@
+networks:
+  ollama-docker:
+    external: false
+  
+services:
+  lm-assist:
+  image: assistant/general
+  container_name: general-assistant
+  build: .
+  restart: always
+  ports:
+    "7777:7777"
+  volumes:
+    - type: bind
+      source: /home/test/localmachine
+      target: /home/test/dockermachine
+    - "/var/run/docker.sock:/var/run/docker.sock:ro"
+  environment:
+    env: -dev
+
+  networks:
+    ollama-docker

@@ -1,0 +1,46 @@
+networks:
+  ollama-docker:
+    external: false
+  
+services:
+  lm-assist:
+  image: assistant/general
+  container_name: general-assistant
+  build: .
+  restart: always
+  ports:
+    "7777:7777"
+  volumes:
+    - type: bind
+      source: /home/test/localmachine
+      target: /home/test/dockermachine
+    - "/var/run/docker.sock:/var/run/docker.sock:ro"
+  environment:
+    env: -dev
+
+  networks:
+    ollama-docker
+
+
+  model_server:
+    build: server
+    image: assist/model-server
+    container_name: model-server
+    restart: always
+    ports:
+    - "11434:11434"
+    volumes:
+      - type: bind
+        source: /data/models
+        target: /root/.ollama
+    environment:
+      - env: -dev
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 4
+              capabilities: [ gpu ]
+    networks:
+      ollama-docker
