@@ -1,2 +1,2 @@
-# lm-assist
-General purpose assistance or ideas
+# LM Assist
+General purpose use of language models to perform tasks, but the direction of the project could also go in other directions.
