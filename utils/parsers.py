@@ -32,6 +32,16 @@ def load_data_split_text(use_dir:str, cleaned_text=None, input_dir=None):
         pages = splitter.split_documents(documents)
 
         metadata_src = pages[0].metadata["source"]
+        filename = ""
+
+        return pages, filename
+    
+    elif use_dir == "false":
+        pages = splitter.split_text(cleaned_text)
+        return pages
+    else:
+        return "Input data not loaded."
+    
 
 # Find the valid file path and raise exception if not found.
 def find_valid_file_path(paths: list):
