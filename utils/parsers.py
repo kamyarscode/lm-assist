@@ -6,9 +6,15 @@ import logging
 
 from langchain_community.document_loaders import DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+
 # Set logging later.
 logging.basicConfig(
     level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+    handlers=[
+            logging.StreamHandler() # log to console from here.
+        ] 
 )
 
 # Add langchain text splitter
