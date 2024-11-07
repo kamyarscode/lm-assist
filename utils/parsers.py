@@ -65,3 +65,34 @@ def find_valid_file_path(paths: list):
     
 
 # Extract PDF data:
+def extract_from_pdf(pdf_path) -> str:
+    ind_page = []
+
+    # Check if file exists
+    if not os.path.exists(pdf_path):
+        raise FileNotFoundError(f"File not found.")
+    
+    try:
+        with open(pdf_path, 'rb') as pdf_file:
+            pdf_reader = PyPDF2.PdfReader(pdf_file)
+            if len(pdf_reader.pages) > 0:
+                # Empty string, store text
+                text = ""
+
+                # Iterate through pages:
+                for page_number in range(len(pdf_reader.pages)):
+                    # Get page count
+                    page = pdf_reader.pages[page_number]
+
+                    page_text = page.extract_text()
+
+                    text += page_text
+                    ind_page.append(page_text)
+
+            else:
+                raise ValueError("File provided not valid")
+        
+    except Exception as e:
+        raise RuntimeError(f"Error reading PDF file.")
+    
+    return text, ind_page
