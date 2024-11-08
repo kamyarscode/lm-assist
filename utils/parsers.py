@@ -1,9 +1,11 @@
 import os
 import json
+import math
 
 import PyPDF2
 import logging
 
+import numpy as np
 import pandas as pd
 from langchain_community.document_loaders import DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -121,3 +123,10 @@ def parse_json(file_path):
 def parse_xls_into_chunks(path):
     
     df = pd.read_excel(path, header=None)
+    n = 10
+
+    # Split the array into chunks of 10.
+    df_array = np.array_split(df, math.ceil(len(df)/n))
+    pd.set_open('display.max_colwidth)', None)
+
+    return df_array
