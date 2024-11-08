@@ -4,6 +4,7 @@ import json
 import PyPDF2
 import logging
 
+import pandas as pd
 from langchain_community.document_loaders import DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
@@ -96,3 +97,27 @@ def extract_from_pdf(pdf_path) -> str:
         raise RuntimeError(f"Error reading PDF file.")
     
     return text, ind_page
+
+
+# Parse json files
+
+def parse_json(file_path):
+    try:
+        with open(file_path, "r") as json_file:
+            data = json.load(json_file)
+            json_file.close()
+            return data
+        
+    except FileNotFoundError:
+        print (f"File not found - {file_path}")
+        return None
+    
+    except json.JSONDecodeError as e:
+        print(f"JSON decode error: {e}")
+        return None
+
+
+# Parse xls file into chunks. return the array.
+def parse_xls_into_chunks(path):
+    
+    df = pd.read_excel(path, header=None)
