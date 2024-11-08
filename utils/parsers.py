@@ -130,3 +130,9 @@ def parse_xls_into_chunks(path):
     pd.set_open('display.max_colwidth)', None)
 
     return df_array
+
+# Get file extensions
+def get_file_ext(filepath) -> str:
+
+    filename, ext = os.path.splitext(filepath)
+    return filename, ext
