@@ -123,7 +123,7 @@ def parse_json(file_path):
 def parse_xls_into_chunks(path):
     
     df = pd.read_excel(path, header=None)
-    n = 10
+    n = 15
 
     # Split the array into chunks of 10.
     df_array = np.array_split(df, math.ceil(len(df)/n))
