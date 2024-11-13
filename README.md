@@ -1,20 +1,21 @@
 # LM Assist
 General purpose use of language models to perform tasks, but the direction of the project could also go in other directions.
+A good use case for this is being able to interact with these models via API while not necessarily needing to host the models yourself. You can use docker to build this system on a server and use their compute/storage. 
 
-# Project Structure
-## API
+## Project Structure
+### API
 The API directory will house the interface to the language model and serve as the communication layer.
-## Server
+### Server
 This directory will pertain to any of the languag model engine/work that needs to be done.
-## src
+### src
 This directory holds the core source for most of the repo.
-## utils
+### utils
 This directory has helper functions to assist with anything needed for computation.
 
-# Procedure
+## Procedure
 
-# Tools/Software
+## Tools/Software
 
-# Installation
+## Installation
 
-# TODO:
+## TODO:
