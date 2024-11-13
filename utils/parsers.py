@@ -101,6 +101,7 @@ def extract_from_pdf(pdf_path) -> str:
     return text, ind_page
 
 
+
 # Parse json files
 
 def parse_json(file_path):
@@ -136,3 +137,16 @@ def get_file_ext(filepath) -> str:
 
     filename, ext = os.path.splitext(filepath)
     return filename, ext
+
+def get_supported_file_contents(file_ext, input_file_path):
+    if file_ext == 'pdf':
+        extracted_text, each_page = extract_from_pdf(input_file_path)
+    
+    elif file_ext == 'txt':
+        extracted_text = extract_from_txt(input_file_path)
+
+    else:
+        
+        raise ValueError(f"Unsupported file type {file_ext}")
+    
+    return extracted_text
