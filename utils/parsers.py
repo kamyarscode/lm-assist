@@ -100,7 +100,22 @@ def extract_from_pdf(pdf_path) -> str:
     
     return text, ind_page
 
+# Parse text file function
 
+def extract_from_txt(txt_file_path):
+    # Check if file exists
+    if not os.path.exists(txt_file_path):
+        raise FileNotFoundError(f"File {txt_file_path} does not exist")
+    
+    try:
+        with open(txt_file_path, 'rt') as file:
+            file_contents = file.read()
+            file.close()
+
+    except Exception as e:
+        raise RuntimeError(f"Error reading text file '{txt_file_path}': {e}")
+
+    return file_contents
 
 # Parse json files
 
