@@ -1,8 +1,8 @@
 {
     "models": {
-        "llama3.1": "",
-        "llama3.1-instruct": "",
-        "default": ""
+        "llama3.1": "llama3.1:8b",
+        "llama3.1-instruct": "llama3.1:8b-instruct-q8_0",
+        "default": "llama3.1:8b"
     } 
 
 }
