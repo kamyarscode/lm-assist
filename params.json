@@ -3,6 +3,12 @@
         "llama3.1": "llama3.1:8b",
         "llama3.1-instruct": "llama3.1:8b-instruct-q8_0",
         "default": "llama3.1:8b"
-    } 
+    },
 
+    "output_cutoff": {
+        "max_length_token": 512,
+        "chunk_size": 3200,
+        "chunk_overlap": 150
+    
+    }
 }
