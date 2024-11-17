@@ -6,6 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 USER root
 
+# Install necessary tools for debugging and running scripts.
 RUN apt-get update && apt-get install -y nano curl net-tools pciutils wget plocate
 
 # Update image:
@@ -32,7 +33,7 @@ RUN /home/lmserver_install_install.sh
 
 # Ollama API runs on 11434. Must use these 2 lines, otherwise it won't work when making API calls. 
 EXPOSE 11434
-ENV OLLAMA_HOST=0.0.0.0
+ENV LM_SERVER_HOST=0.0.0.0
 
 
 #CMD tail -f /dev/nullCMD # use for debugging container when crashing.
