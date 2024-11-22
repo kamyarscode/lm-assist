@@ -1,6 +1,7 @@
 from server.ollama import client
 import json
 
+from helpers import check_which_prompt
 def prompt_model(input_str: str, metadata={}, model="default"):
 
     SYSTEM_PROMPT_DICT = {
