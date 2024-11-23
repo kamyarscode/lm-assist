@@ -15,7 +15,7 @@ def prompt_model(input_str: str, metadata={}, model="default"):
         'top_k': 30,
         'top_p': 0.85,
         'repeat_last_n': 512,
-        'temperature': 0.5
+        'temperature': 0.7
     }
 
     SYSTEM_PROMPT = SYSTEM_PROMPT_DICT['prompt_to_use'][1]
