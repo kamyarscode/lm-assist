@@ -1,7 +1,12 @@
 from server.ollama import client
 import json
 
+import numpy as np
+
+import pandas as pd
 from helpers import check_which_prompt
+
+# Function to go through and pick out model to use with its configurations.
 def prompt_model(input_str: str, metadata={}, model="default"):
 
     SYSTEM_PROMPT_DICT = {
@@ -40,3 +45,25 @@ def prompt_model(input_str: str, metadata={}, model="default"):
 
     return result
 
+# Go through results model spits out and parse them. If not parsable into array, return empty array.
+def parse_model_resp(dataframe: pd.DataFrame, model=None) -> list:
+
+    results = dataframe.apply(lambda row: (print(f"Processing..\n"), prompt_model(row.text, {"data": row.data}, model))[1], axis=1
+                                        )
+
+    results = results.dropna()
+    results = results.reset_index(drop=True)
+
+    if results.empty:
+        print (f"Empty list, review {results}")
+        return []
+    
+
+    try:
+        final_output_msg = np.concatenate(results).ravel().tolist()
+
+    except ValueError as e:
+        print (f"Error concatenating: {e}")
+        return []
+    
+    return final_output_msg
