@@ -18,3 +18,10 @@ def check_which_prompt(model):
 
     elif model == "llama3.1:8b":
         SYSTEM_PROMPT = LLAMA_Q_SYSTEM_PROMPT
+
+# Set to lowercase
+def lowercase_string(x):
+    if isinstance(x, str):
+        x.lower()
+
+    return x
