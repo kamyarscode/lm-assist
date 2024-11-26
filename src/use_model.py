@@ -4,7 +4,7 @@ import json
 import numpy as np
 
 import pandas as pd
-from helpers import check_which_prompt
+from helpers import check_which_prompt, lowercase_string
 
 # Function to go through and pick out model to use with its configurations.
 def prompt_model(input_str: str, metadata={}, model="default"):
@@ -67,3 +67,17 @@ def parse_model_resp(dataframe: pd.DataFrame, model=None) -> list:
         return []
     
     return final_output_msg
+
+def clean_model_resp(response_array):
+
+    response_df = pd.DataFrame(response_array).replace(["", " "], np.nan)
+    response_df = response_df.dropna(subset=["val1", "val2"])
+
+    for i, value in response_df["val1"].items():
+        try:
+            response_df.at[i, "val1"] = lowercase_string(value)
+        except AttributeError as e:
+            print (f"Error {e} at index {i}")
+
+    
+    return response_df
