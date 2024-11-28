@@ -5,10 +5,11 @@
         "default": "llama3.1:8b"
     },
 
-    "output_cutoff": {
+    "model_hyper_params": {
         "max_length_token": 512,
         "chunk_size": 3200,
-        "chunk_overlap": 150
+        "chunk_overlap": 150,
+        "repeat_last_n": 256
     
     }
 }
