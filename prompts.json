@@ -1,0 +1,4 @@
+{
+    "SYS_PROMPT": "This is the system prompt section",
+    "SUMMARIZE_PROMPT": "Prompt to initiate summarization"
+}
