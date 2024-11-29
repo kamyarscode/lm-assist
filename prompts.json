@@ -1,4 +1,5 @@
 {
     "SYS_PROMPT": "This is the system prompt section",
+    "LLAMA_Q_SYSTEM_PROMPT": "Llama system prompt",
     "SUMMARIZE_PROMPT": "Prompt to initiate summarization"
 }
