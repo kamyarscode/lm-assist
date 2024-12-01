@@ -2,6 +2,8 @@
 General purpose use of language models to perform tasks, but the direction of the project could also go in other directions.
 A good use case for this is being able to interact with these models via API while not necessarily needing to host the models yourself. You can use docker to build this system on a server and use their compute/storage. 
 
+2 Use cases for this will be syncing large files, specifically code to understand what happens inside them, and parsing PDFs. 
+
 ## Project Structure
 
 ### API
