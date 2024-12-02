@@ -35,4 +35,6 @@ def summarize_tool(input_txt: str, default_model=default_model) -> dict:
     
     return result_output
 
+#TODO add support for vision model
+
     
