@@ -2,6 +2,7 @@ import json
 import time
 
 from flask import Flask, request
+from server.ollama import return_client_version
 
 app = Flask(__name__)
 
@@ -40,3 +41,4 @@ def get_client_version():
         "message": response,
         "llm_server_version": version
     }
+
