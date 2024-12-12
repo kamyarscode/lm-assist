@@ -228,3 +228,10 @@ def heartbeat():
     except requests.exceptions.RequestException as e:
         print(f"An error occurred: {e}")
         return "Language Model engine is not running"
+
+# Just return model server version
+def return_client_version():
+    
+    response = heartbeat()
+
+    return response
