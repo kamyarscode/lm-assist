@@ -42,3 +42,10 @@ def get_client_version():
         "llm_server_version": version
     }
 
+def main():
+    app.run(port=5555, debug=False)
+    print ("Server is running now.")
+
+if __name__ == "__main__":
+
+    main()
