@@ -20,3 +20,7 @@ def find_similar_phrases(phrases, query_embedding, top_k=5):
 
     D, I = index.search(np.array([query_embedding]), top_k)
     return [(phrases[idx], D[0][i]) for i, idx in enumerate(I[0])]
+
+# Test similarity utilities but needs better normalizing.
+
+for i, phrase in enumerate(phrases)

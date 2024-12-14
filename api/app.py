@@ -43,7 +43,7 @@ def get_client_version():
     }
 
 def main():
-    app.run(port=5555, debug=False)
+    app.run(port=7777, debug=False)
     print ("Server is running now.")
 
 if __name__ == "__main__":
