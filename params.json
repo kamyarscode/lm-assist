@@ -16,10 +16,10 @@
     },
 
     "prompts": {
-            "TEST_PROMPT": "This is just a test prompt. Reply back with a nice hello in json format.",
+            "TEST_PROMPT": "This is just a test prompt. Reply back with a nice hello in json format. Don't use special characters such as ticks or `",
             "SYS_PROMPT": "This is the system prompt section",
             "LLAMA_Q_SYSTEM_PROMPT": "Llama system prompt",
-            "SUMMARIZE_PROMPT": "Prompt to initiate summarization",
+            "SUMMARIZE_PROMPT": "Summarize the text given to you concisely and provide all of the main points. Your output must include at most 5 sentences. Respond only in JSON format and avoid special characters.",
             "CODE_ASSIST": "Code assistant prompt",
             "RESUME_ASSIST": "Resume prompt"
         
