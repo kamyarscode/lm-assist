@@ -217,21 +217,42 @@ def show(model_name):
     except requests.exceptions.RequestException as e:
         print(f"An error occurred: {e}")
         return None
-
-def heartbeat():
+    
+# Show info about a model.
+def version():
     try:
-        url = f"{BASE_URL}/"
-        response = requests.head(url)
+        url = f"{BASE_URL}/api/version"
+        response = requests.get(url)
         response.raise_for_status()
-        return "Language Model engine is running"
+        
+        # Parse the JSON response and return it
+        data = response.json()
+        return data
     
     except requests.exceptions.RequestException as e:
         print(f"An error occurred: {e}")
-        return "Language Model engine is not running"
+        return None
 
-# Just return model server version
-def return_client_version():
+def ollama_health():
+    data = {
+        "status": "",
+        "message": "",
+        "version": ""
+    }
+
+    try:
+        ollama_version_info = version()
+
+        data['status'] = 200
+        data['version'] = ollama_version_info['version']
+        data['message'] = "Language Model engine is running"
+        
+        return data
     
-    response = heartbeat()
+    except requests.exceptions.RequestException as e:
+        data['message'] = "Language Model engine is not running"
+        data['status'] = 500
 
-    return response
+        print(f"An error occurred: {e}")
+
+        return data
