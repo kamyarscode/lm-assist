@@ -1,17 +1,25 @@
-from server.ollama import client
+import server.ollama as ollama_client
 import json
 
 import numpy as np
 
 import pandas as pd
-from helpers import check_which_prompt, lowercase_string
+from helpers import check_which_prompt, lowercase_string, get_models_real_name
 
 # Function to go through and pick out model to use with its configurations.
-def prompt_model(input_str: str, metadata={}, model="default"):
+def prompt_model(input_str: str, metadata={}, short_model_name="default", type_of_task="summarize"):
 
-    SYSTEM_PROMPT_DICT = {
-        "prompt_to_use": check_which_prompt(model)
-    }
+    # Dont need dict for this..
+    # model_and_prompt = {
+    #     "model": get_models_real_name(short_model_name),
+    #     "prompt_to_use": check_which_prompt(type_of_task)
+    # }
+
+    # Get name of model from short name
+    model = get_models_real_name(short_model_name)
+
+    # Get prompt based off task type.
+    system_task_prompt = check_which_prompt(type_of_task)
 
     # Set model hyperparameters. Do this with config file later.
     model_config = {
@@ -23,11 +31,10 @@ def prompt_model(input_str: str, metadata={}, model="default"):
         'temperature': 0.7
     }
 
-    SYSTEM_PROMPT = SYSTEM_PROMPT_DICT['prompt_to_use'][1]
 
     # User prompt begins here
     user_prompt = f"{input_str}<|eot_id|>\n<|start_header_id|>assistant<|end_header_id|>"
-    response, _ = client.generate(model_name=model,system=SYSTEM_PROMPT,prompt=user_prompt,options=model_config)
+    response, _ = ollama_client.generate(model_name=model,system=system_task_prompt,prompt=user_prompt,options=model_config)
 
     try:
 

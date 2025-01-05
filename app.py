@@ -2,16 +2,23 @@ import json
 import time
 
 from flask import Flask, request
-from server.ollama import return_client_version
-
+from server.ollama import ollama_health
+from src.use_model import prompt_model
 app = Flask(__name__)
 
 # Test endpoint here.
 
 @app.route('/api/test')
 def test():
-    
-    return "This is test endpoint."
+    input_str = "hello there"
+    model_name = "llama3.2-instruct"
+    result = prompt_model(input_str, short_model_name=model_name, type_of_task="test")
+
+    data = {
+        "result": result
+    }
+
+    return data
 
 @app.route('/api/version')
 def get_version():
@@ -36,13 +43,10 @@ def homepage():
 # Return server client version
 @app.route('/api/cv')
 def get_client_version():
+    
+    data = ollama_health()
 
-    response, status, version = return_client_version()
-    data = {
-        "status": status,
-        "message": response,
-        "llm_server_version": version
-    }
+    return data
 
 def main():
     app.run(port=7777, debug=False)

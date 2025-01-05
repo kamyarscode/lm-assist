@@ -1,26 +1,60 @@
-from server.ollama import client
-import os
+import server.ollama as ollama_client
+from src.load_config import project_config
 
-# Get from config file later
-LLAMA_SYS_PROMPT = "some llama prompt here for purpose"
-LLAMA_Q_SYSTEM_PROMPT = "prompt for quantized llama3.1"
+import os
+import logging
+
+logging.basicConfig(
+    level=logging.INFO, 
+    format='%(asctime)s - %(levelname)s - %(message)s', 
+    handlers=[
+        logging.StreamHandler()
+        ]
+    )
 
 def return_client_version():
-    response = client.heartbeat()
+    response = ollama_client.heartbeat()
 
     return response
 
+# Depending on user input short name, we want to retrieve the full name to call from client.
+def get_models_real_name(short_model_name):
+    match short_model_name:
+        case None:
+            return project_config['models']['llama3.2-instruct']
+        
+        case "default":
+            return project_config['models']['llama3.2-instruct']
+        
+        case "llama3.2-instruct":
+            return project_config['models']['llama3.2-instruct']
+        
+        case "llama3.2":
+            return project_config['models']['llama3.2']
+        
+
 # Check which model to use with universal function
-def check_which_prompt(model):
-    if model == None:
-        model = "llama3.1"
+def check_which_prompt(type_of_task):
+    match type_of_task:
+        case None:
+            return project_config['prompts']["TEST_PROMPT"]
+        
+        case "default":
+            return project_config['prompts']["TEST_PROMPT"]
+        
+        case "test":
+            return project_config['prompts']["TEST_PROMPT"]
+        
+        case "summarize":
+            return project_config['prompts']["SUMMARIZE_PROMPT"]
+        
+        case "resume":
+            return project_config['prompts']["RESUME_ASSIST"]
+        
+        case "code assist":
+            return project_config['prompts']["CODE_ASSIST"]
+        
 
-    elif model == "llama3:latest":
-
-        SYSTEM_PROMPT = LLAMA_SYS_PROMPT
-
-    elif model == "llama3.1:8b":
-        SYSTEM_PROMPT = LLAMA_Q_SYSTEM_PROMPT
 
 # Set to lowercase
 def lowercase_string(x):
