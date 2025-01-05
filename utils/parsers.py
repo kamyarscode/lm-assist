@@ -164,3 +164,22 @@ def get_supported_file_contents(file_ext, input_file_path):
         raise ValueError(f"Unsupported file type {file_ext}")
     
     return extracted_text
+
+
+# Parse between dict or list options.
+def dict_list_parser(model_output):
+    """
+    Currently supports parsing lists and dicts.
+    """
+
+    if isinstance(model_output, list) and len(model_output) > 0:
+        # Handle lists
+        return json.dumps({"type": "list", "data": model_output}, indent=2)
+    
+    elif isinstance(model_output, dict) and len(model_output) > 0:
+        # Handle dictionaries
+        return json.dumps({"type": "dict", "data": model_output}, indent=2)
+    
+    else:
+        # Handle other types (e.g., string, int, float, etc.)
+        return json.dumps({"type": "other", "data": str(model_output)}, indent=2)
