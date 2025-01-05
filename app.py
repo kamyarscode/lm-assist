@@ -31,6 +31,8 @@ def homepage():
         "message": "App is running."
     }
 
+    return data
+
 # Return server client version
 @app.route('/api/cv')
 def get_client_version():

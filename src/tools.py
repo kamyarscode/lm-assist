@@ -9,10 +9,11 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'
     handlers=[
             logging.StreamHandler() # log to console from here.
-        ] 
+        ]
 )
 
 default_model = project_config['models']['llama3.1']
+llama3_instruct = project_config['models']['llama3.2-instruct']
 
 def summarize_tool(input_txt: str, default_model=default_model) -> dict:
     model = default_model

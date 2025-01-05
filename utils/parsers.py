@@ -11,19 +11,18 @@ from langchain_community.document_loaders import DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 
-# Set logging later.
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
+    level=logging.INFO, 
+    format='%(asctime)s - %(levelname)s - %(message)s', 
     handlers=[
-            logging.StreamHandler() # log to console from here.
-        ] 
-)
+        logging.StreamHandler()
+        ]
+    )
 
 # Add langchain text splitter
 def load_data_split_text(use_dir:str, cleaned_text=None, input_dir=None):
 
-    splitter = RecursiveCharacterTextSplitter1(
+    splitter = RecursiveCharacterTextSplitter(
         chunk_size=3200,
         chunk_overlap=150,
         length_function=len,

@@ -33,8 +33,8 @@ def lowercase_string(x):
 def files_in_directory(directory):
     file_list = []
 
-    for filename in os.listdir(directory)
-        if not os.path.isfile(os.path.join(directory, filename))
+    for filename in os.listdir(directory):
+        if not os.path.isfile(os.path.join(directory, filename)):
             file_list.append(filename)
 
     return file_list

@@ -2,7 +2,8 @@
     "models": {
         "llama3.1": "llama3.1:8b",
         "llama3.1-instruct": "llama3.1:8b-instruct-q8_0",
-        "default": "llama3.1:8b"
+        "default": "llama3.1:8b",
+        "llama3.2-instruct": "llama3.2:3b-instruct-q8_0"
     },
 
     "model_hyper_params": {
@@ -11,5 +12,14 @@
         "chunk_overlap": 150,
         "repeat_last_n": 256
     
+    },
+
+    "prompts": {
+            "SYS_PROMPT": "This is the system prompt section",
+            "LLAMA_Q_SYSTEM_PROMPT": "Llama system prompt",
+            "SUMMARIZE_PROMPT": "Prompt to initiate summarization",
+            "CODE_ASSIST": "Code assistant prompt",
+            "RESUME_ASSIST": "Resume prompt"
+        
     }
 }

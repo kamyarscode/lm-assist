@@ -1,1 +1,2 @@
-assist/
+.venv
+src/lang_model_assist.egg-info
