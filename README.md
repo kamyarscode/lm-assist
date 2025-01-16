@@ -9,7 +9,7 @@ A good use case for this is being able to interact with these models via API whi
 ### API
 The API directory will house the interface to the language model and serve as the communication layer.
 ### Server
-This directory will pertain to any of the languag model engine/work that needs to be done.
+This directory will pertain to any of the language model engine/work that needs to be done.
 ### src
 This directory holds the core source for most of the repo.
 ### utils
