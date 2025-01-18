@@ -18,7 +18,8 @@ This directory has helper functions to assist with anything needed for computati
 ## Procedure
 
 ## Tools/Software
-
+# Ollama section
+# conda section
 ## Installation
 Run the install script by going into the project root directory. Make sure permissions are set such that it is executable. `./install.sh` should start things up. The installation will build a docker image and container on your local machine that contains the API.
 
