@@ -17,9 +17,21 @@ This directory has helper functions to assist with anything needed for computati
 
 ## Procedure
 
+## How To Run
+
+## Endpoints
+
+### Dockerized
+
+### Without Docker
+Follow the instructions on [Ollama's page](https://ollama.com/download) to install on your machine.
+
 ## Tools/Software
-# Ollama section
-# conda section
+Ollama - Model hosting server.  
+Conda - virtual environment management.  
+Docker - Build images and host anywhere.  
+Flask - API Development and Management.  
+
 ## Installation
 Run the install script by going into the project root directory. Make sure permissions are set such that it is executable. `./install.sh` should start things up. The installation will build a docker image and container on your local machine that contains the API.
 
