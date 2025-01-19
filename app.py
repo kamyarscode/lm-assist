@@ -1,11 +1,26 @@
 import json
 import time
 
-from flask import Flask, request
+from flask import Flask, request, render_template
 from server.ollama import ollama_health
 from src.use_model import prompt_model
 app = Flask(__name__)
 
+
+@app.route('/api/process', methods=['POST'])
+def process():
+    text1 = request.form.get('text1', '')
+    text2 = request.form.get('text2', '')
+    
+    result = text1 + text2
+    return render_template('main_page.html', result=result)
+
+
+# Main page that gets served here. Used for testing endpoints.
+@app.route('/')
+def index():
+    """Serve the web page."""
+    return render_template("main_page.html")
 # Test endpoint here.
 
 @app.route('/api/test')
@@ -25,17 +40,7 @@ def get_version():
 
     data = {
         "status": 200,
-        "version": "0.1"
-    }
-
-    return data
-
-@app.route('/')
-def homepage():
-        
-    data = {
-        "status": 200,
-        "message": "App is running."
+        "version": "0.1.0"
     }
 
     return data
