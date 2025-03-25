@@ -36,3 +36,4 @@ Flask - API Development and Management.
 Run the install script by going into the project root directory. Make sure permissions are set such that it is executable. `./install.sh` should start things up. The installation will build a docker image and container on your local machine that contains the API.
 
 ## TODO:
+- Add code recognition
