@@ -38,3 +38,5 @@ Run the install script by going into the project root directory. Make sure permi
 ## TODO:
 - Add code recognition
     - use old commits for context when writing new sections of code
+    - Use dependency graph to narrow where to look.
+
