@@ -8,6 +8,11 @@ def get_chat_history():
     
     return deque(session.get('chat_history', []), maxlen=10)
 
+def clear_chat_history():
+    """Clear the chat history stored in the session."""
+    
+    session['chat_history'] = []
+    return session['chat_history']
 
 def add_to_chat_history(chat_history: deque, user_input, llm_response):
 
