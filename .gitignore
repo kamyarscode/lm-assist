@@ -3,3 +3,4 @@ src/lang_model_assist.egg-info
 notes.md
 static/
 templates/
+data/
