@@ -4,7 +4,8 @@
         "llama3.1": "llama3.1:8b",
         "llama3.1-instruct": "llama3.1:8b-instruct-q8_0",
         "llama3.2": "llama3.1:8b",
-        "llama3.2-instruct": "llama3.2:3b-instruct-q8_0"
+        "llama3.2-instruct": "llama3.2:3b-instruct-q8_0",
+        "gemma3": "gemma3:4b-it-q8_0"
     },
 
     "model_hyper_params": {
