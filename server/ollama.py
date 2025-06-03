@@ -20,6 +20,7 @@ def generate(model_name, prompt, system=None, template=None, context=None, optio
             "options": options
         }
         
+        print ("payload sent to model: ", payload)
         # Remove keys with None values
         payload = {k: v for k, v in payload.items() if v is not None}
         
