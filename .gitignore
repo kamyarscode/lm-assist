@@ -4,3 +4,5 @@ notes.md
 static/
 templates/
 data/
+__pycache__/
+uv.lock
