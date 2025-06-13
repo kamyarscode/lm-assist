@@ -1,12 +1,14 @@
 import json
 import time
-from flask import Flask, request, render_template, jsonify, session
+from flask import Flask, request, render_template
 from server.ollama import ollama_health
 from src.use_model import prompt_model
-from api.chat_utils import get_chat_history
-from src.tools import chat_tool
+from chat.routes import chat_bp
+
 app = Flask(__name__)
 
+# Register blueprint
+app.register_blueprint(chat_bp)
 
 @app.route('/api/process', methods=['POST'])
 def process():
@@ -16,25 +18,6 @@ def process():
     result = text1 + text2
     return render_template('main_page.html', result=result)
 
-@app.route('/chat', methods=['POST'])
-def chat_func():
-    # Get user input from the request
-    user_input = request.json.get("message")
-
-
-    if not user_input:
-        return jsonify({"error": "Empty input"}), 400
-
-
-    chat_tool_response = chat_tool(chat_history=get_chat_history(), input_txt=user_input)
-
-    session['chat_history'] = chat_tool_response['chat_history']
-    print ("Current chat history: ", session['chat_history'])
-
-    # Set up session to store chat history.
-
-    return jsonify({
-        "response": chat_tool_response["model_response"],})
 
 # Main page that gets served here. Used for testing endpoints.
 @app.route('/')
